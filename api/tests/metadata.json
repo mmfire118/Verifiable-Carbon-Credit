@@ -1,0 +1,13 @@
+{
+  "title": "Project Design Document",
+  "author": "Bob Smith",
+  "contact-information": "bob@smith.com",
+  "version": "1.0.0",
+  "date-of-issue": "8 November 2022",
+  "project-location": "Cambridge, MA",
+  "description": "Test Project",
+  "start-date": "8 November 2022",
+  "crediting-period": 6,
+  "estimated-amount": 100,
+  "energy-consumption": 20
+}
