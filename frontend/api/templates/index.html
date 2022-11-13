@@ -330,12 +330,12 @@
                                         <form>
                                             <div class="row">
                                                 <div class="col-12 mb-1">
-                                                    <small id="uploadData" class="text-muted"></small>
+                                                    <a id="uploadData" class="link-primary" target='_blank'></a>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-12 mb-1">
-                                                    <small id="metadataData" class="text-muted"></small>
+                                                    <a id="metadataData" class="link-primary" target='_blank'></a>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -599,6 +599,7 @@
                     success: function(response){
                         linkOne = response.result[0].path
                         $('#uploadData').text('Data: ' + linkOne)
+                        $('#uploadData').attr("href", linkOne)
                         $.unblockUI();
                         modernVerticalStepper.next();
                     },
@@ -666,6 +667,7 @@
                     success: function(response){
                         linkTwo = response.result[0].path
                         $('#metadataData').text('Metadata: ' + linkTwo)
+                        $('#metadataData').attr("href", linkTwo)
                         $.unblockUI();
                         modernVerticalStepper.next();
                     },
