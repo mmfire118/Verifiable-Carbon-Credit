@@ -161,17 +161,6 @@
                                             </span>
                                         </button>
                                     </div>
-                                    <div class="step" data-target="#create-app-database" role="tab" id="create-app-database-trigger">
-                                        <button type="button" class="step-trigger py-75" style="pointer-events: none!important;">
-                                            <span class="bs-stepper-box">
-                                                <i data-feather="zap" class="font-medium-3"></i>
-                                            </span>
-                                            <span class="bs-stepper-label">
-                                                <span class="bs-stepper-title">Wallet</span>
-                                                <span class="bs-stepper-subtitle">Connect to Wallet</span>
-                                            </span>
-                                        </button>
-                                    </div>
                                     <div class="step" data-target="#create-app-submit" role="tab" id="create-app-submit-trigger">
                                         <button type="button" class="step-trigger py-75" style="pointer-events: none!important;">
                                             <span class="bs-stepper-box">
@@ -331,29 +320,6 @@
                                             </button>
                                         </div>
                                     </div>
-                                    <div id="create-app-database" class="content" role="tabpanel" aria-labelledby="create-app-database-trigger">
-                                        <div class="content-header">
-                                            <h5 class="mb-0">Wallet</h5>
-                                            <small class="text-muted">Connect Your Wallet.</small>
-                                        </div>
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-12 mb-1">
-                                                    <button id="connect" type="button" class="btn btn-primary btn-lg w-100">Connect</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <div class="d-flex justify-content-between mt-2">
-                                            <button class="btn btn-primary btn-prev">
-                                                <i data-feather="arrow-left" class="align-middle me-sm-25 me-0"></i>
-                                                <span class="align-middle d-sm-inline-block d-none">Previous</span>
-                                            </button>
-                                            <button class="btn btn-primary btn-next">
-                                                <span class="align-middle d-sm-inline-block d-none">Next</span>
-                                                <i data-feather="arrow-right" class="align-middle ms-sm-25 ms-0"></i>
-                                            </button>
-                                        </div>
-                                    </div>
                                     <div id="create-app-submit" class="content" role="tabpanel" aria-labelledby="create-app-submit-trigger">
                                         <div class="content-header">
                                             <h5 class="mb-0">Submit</h5>
@@ -362,10 +328,7 @@
                                         <form>
                                             <div class="row">
                                                 <div class="col-12 mb-1">
-                                                    <div class="col-12 mb-1">
-                                                        <label class="form-label" for="tree-diameter-breast-height">Tree Diameter Breast Height</label>
-                                                        <input type="text" name="tree-diameter-breast-height" id="tree-diameter-breast-height" class="form-control text-center tree-diameter-breast-height" type="tel" placeholder="123" />
-                                                    </div>
+                                                    <button id="connect" type="button" class="btn btn-primary btn-lg w-100">Connect Wallet</button>
                                                 </div>
                                             </div>
                                         </form>
