@@ -58,6 +58,19 @@ We deployed the following Solidity contracts on the TRON Nile testnet: https://g
     - We currently assume linear decline in the growth rate of the biomass, however in the future we hope to implement a logarithmic decline, which while more complicated would be even more accurate.
     - Refer to our code to see our calculations and rationale behind them.
 
-For local testing, we use HardHat, ethers.js, and expect to build out a robust test suite that deploys a local blockchain and simulates transactions.
+For local testing, we use HardHat and ethers.js to build out a robust test suite that deploys a local blockchain and simulates transactions.
 
 We used the TRON nile test faucet and set up a TronLink wallet to deploy these contracts on-chain. By using the Tronide code editor and GUI to deploy our contracts, we were able to compile Solidity in a cloud-based editor, connect with a wallet, and deploy instantaneously without having to deal with command-line interactions and manually connecting our wallet through more code. This enabled us to rapidly speed up our development and user testing timeline.
+
+## Usage
+
+In `/contract`:
+- Install repository dependencies with `npm install`.
+- Compile with `npx hardhat compile`.
+- Test with `npx hardhat test`.
+
+In `/api`:
+- Run with `nodejs index.js` (Moralis backend API endpoint).
+
+In `/frontend`:
+- TODO @Miles
