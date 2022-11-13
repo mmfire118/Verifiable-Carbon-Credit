@@ -108,20 +108,11 @@
                                                             <p>
                                                                 VCC is a fully verifiable on-chain carbon credit ecosystem. Our platform allows companies to do the following, all fully on-chain and open-source:
                                                             </p>
-                                                            <ul>
-                                                                <li>
-                                                                    upload carbon project data
-                                                                </li>
-                                                                <li>
-                                                                    verifiably calculate estimated carbon offset amounts
-                                                                </li>
-                                                                <li>
-                                                                    trade, exchange, and retire carbon credits
-                                                                </li>
-                                                            </ul>
-                                                            <p>
-                                                                Click 'Get Started' to begin!
-                                                            </p>
+                                                            <ol class="list-group list-group-numbered">
+                                                                <li class="list-group-item">upload carbon project data</li>
+                                                                <li class="list-group-item">verifiably calculate estimated carbon offset amounts</li>
+                                                                <li class="list-group-item">trade, exchange, and retire carbon credits</li>
+                                                            </ol>
                                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#createAppModal">Get Started</button>
                                                         </div>
                                                     </div>
@@ -755,7 +746,7 @@
     }
 
     async function verify() {
-        var contract = contract_obj.at('TDH8rbxbGgRAdQ4rLVCMQsDhg6PuqtLXpt');
+        var contract = await contract_obj.at('TDH8rbxbGgRAdQ4rLVCMQsDhg6PuqtLXpt');
         var result = await contract.verify(linkOne, linkTwo, $("#tree-diameter").val()).send({
             feeLimit:100_000_000,
             callValue:totalPrice,
