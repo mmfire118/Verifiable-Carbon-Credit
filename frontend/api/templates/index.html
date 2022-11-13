@@ -787,8 +787,12 @@
 
     // Connect Button
     $("#connect").click(function() {
-        await window.tronWeb.contract()
+        contract()
     })
+
+    async function contract() {
+        await window.tronWeb.contract()
+    }
 
     });
 </script>
