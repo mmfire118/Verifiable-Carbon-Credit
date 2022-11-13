@@ -3,6 +3,8 @@ const cors = require('cors')
 const Moralis = require('moralis').default;
 const fs = require('fs');
 
+const port = process.env.PORT || 3001;
+
 async function upload(metadata, type) {
   await Moralis.start({
     apiKey: "4YHNRJBE7DR0ZHI6AsXkkiKAnOZ92rOT1gKFi703CAUdYW8dxLymsNVw1ccJLOPN",
@@ -48,7 +50,7 @@ app.get('/', function (req, res) {
   res.send('Hello, World');
 })
 
-const server = app.listen(function () {
+const server = app.listen(port, function () {
   const host = server.address().address;
   const port = server.address().port;
   console.log(host, port);
