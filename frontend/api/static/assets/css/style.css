@@ -1,0 +1,126 @@
+/*================================================================================
+	Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
+	Version: 2.0
+	Author: PIXINVENT
+	Author URL: http://www.themeforest.net/user/pixinvent
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+
+@media (min-width: 768px) {  
+  .larger {font-size:2rem;} /*1rem = 16px*/
+}
+
+#message {
+	position: relative;
+	padding: 20px;
+	margin-top: 10px;
+  }
+  
+  #message p {
+	padding: 10px 35px;
+	font-size: 1.15rem;
+  }
+  
+  /* Add a green text color and a checkmark when the requirements are right */
+  .valid {
+	color: green;
+  }
+  
+  .valid:before {
+	position: relative;
+	left: -35px;
+	content: "✔";
+  }
+  
+  /* Add a red text color and an "x" icon when the requirements are wrong */
+  .invalid {
+	color: red;
+  }
+  
+  .invalid:before {
+	position: relative;
+	left: -35px;
+	content: "✖";
+  }
+
+  .dataTables_info {
+	  text-align: left;
+  }
+
+  .select2-selection__rendered {
+	  text-align: center;
+  }
+
+  .flatpickr-date-time {
+	text-align: center;
+  }
+
+.input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+    border-top-right-radius: 0.357rem;
+    border-bottom-right-radius: 0.357rem;
+}
+
+  @media (min-width: 1200px) {
+	h2, .h2 {
+	  font-size: 1.65rem; } }
+	
+
+	input[type="image"]:hover {
+	border: 1px solid black;
+	}
+
+.bs-stepper .bs-stepper-header .line {
+	padding: 0 1.25rem;
+}
+
+input.flatpickr-input {
+-webkit-appearance: none !important;
+}
+
+input[type="search"] {
+	/* padding: .571rem 0rem; */
+	text-align: center;
+}
+
+th {
+	white-space: nowrap;
+}
+
+td {
+	text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+	div.dt-buttons button {
+
+		margin-bottom: 1rem;
+
+	}
+}
+
+body.swal2-shown.swal2-height-auto {
+	height: 100% !important;
+}
+
+.invoice-preview .invoice-date-wrapper .invoice-date,
+.invoice-edit .invoice-date-wrapper .invoice-date,
+.invoice-add .invoice-date-wrapper .invoice-date { 
+  margin-left: 0;
+}
+
+.apexcharts-canvas svg {
+    border-bottom-left-radius: .428rem;
+    border-bottom-right-radius: .428rem;
+}
+
+.flatpickr-wrapper {
+	display: block;
+}
+
+.blockOverlay, .blockElement, .blockPage {
+    z-index: 2000!important;
+}
