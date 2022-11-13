@@ -550,7 +550,7 @@
           if (isValid) {
             var dataJSON = $(this).parent().siblings('form').serializeArray();
             $.ajax({
-                    url: 'http://127.0.0.1:5018/upload',
+                    url: 'https://vcc-backend-5uia.onrender.com/upload',
                     data: JSON.stringify({
                         "title": $("#title").val(),
                         "author": $("#author").val(),
@@ -616,7 +616,7 @@
           if (isValid) {
             var dataJSON = $(this).parent().siblings('form').serializeArray();
             $.ajax({
-                    url: 'http://127.0.0.1:5018/upload',
+                    url: 'https://vcc-backend-5uia.onrender.com/upload',
                     data: JSON.stringify({
                         "plot-id": $("#plot-id").val(),
                         "plot-area": $("#plot-area").val(),

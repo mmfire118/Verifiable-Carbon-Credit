@@ -48,10 +48,10 @@ app.get('/', function (req, res) {
   res.send('Hello, World');
 })
 
-const server = app.listen(5018, "127.0.0.1", function () {
+const server = app.listen(function () {
   const host = server.address().address;
   const port = server.address().port;
   console.log(host, port);
 
-  console.log("Listening at http://%s:%s", host, port);
+  console.log("Listening at https://%s:%s", host, port);
 });
