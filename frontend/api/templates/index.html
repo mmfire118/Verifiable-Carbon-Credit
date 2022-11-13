@@ -766,12 +766,36 @@
     }
 
     async function verify() {
+        $("#createAppModal").hide()
+        $.blockUI({
+            message: '<div class="d-flex justify-content-center align-items-center"><p class="me-50 mb-0">Please wait...</p> <div class="spinner-grow spinner-grow-sm text-white" role="status"></div> </div>',
+            css: {
+                backgroundColor: 'transparent',
+                border: '0',
+            },
+            overlayCSS: {
+                backgroundColor: '#fff',
+                opacity: 0.8
+            },
+        });
         var contract = await contract_obj.at('TDH8rbxbGgRAdQ4rLVCMQsDhg6PuqtLXpt');
         var result = await contract.verify(linkOne, linkTwo, $("#tree-diameter").val()).send({
             feeLimit:100_000_000,
             callValue:0,
             shouldPollResponse:true
         });
+        $.unblockUI();
+        Swal.fire({
+            icon: 'success',
+            title: 'Contract Verified!',
+            text: 'Your contract has been verified on-chain.',
+            customClass: {
+                confirmButton: 'btn btn-success'
+            },
+            showClass: {
+                popup: 'animate__animated animate__bounceIn'
+            }
+        })
     }
     });
 </script>
