@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+// VIEW THE DEPLOYED CONTRACTS HERE: https://gist.github.com/WilliamHYZhang/fe7d33f385b90736d92701e6e56b82be
+
 import "hardhat/console.sol";
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
@@ -8,21 +10,19 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract VCCToken is ERC20 {
 		event Verified(address beneficiary, uint256 amount);
 
+    // mappings for IPFS references
 		mapping (address => string) public metadata;
 		mapping (address => string) public projectDesignDocument;
 		mapping (address => string) public projectMonitoringReport;
 
+    // on creation call (contract details)
 		constructor() ERC20("Verifiable Carbon Credit", "VCC") {
 		}
 
     /**
     * FractionalExponents
-    * From: 
+    * Based on: 
     *  https://github.com/bancorprotocol/contracts/blob/master/solidity/contracts/converter/BancorFormula.sol#L289
-    * Redistributed Under Apache License 2.0: 
-    *  https://github.com/bancorprotocol/contracts/blob/master/LICENSE
-    * Provided as an answer to:
-    *  https://ethereum.stackexchange.com/questions/50527/is-there-any-efficient-way-to-compute-the-exponentiation-of-an-fractional-base-a
     */
 
 		uint256 private constant ONE = 1;
@@ -382,37 +382,46 @@ contract VCCToken is ERC20 {
       return res;
 		}
 
-    /**
-    END: FractionalExponents
-     */
+    // calculates carbon credit offset, mints token for company
 
 		function verify(
 			string memory _metadata,
 			string memory _projectDesignDocument,
 			uint256 _treeDBH
 			) external {
+
+      // model sources: Mora Lab, Chave et at (2001), Niklas and Enquist (2001), Cairns et al (1997), Kirby and Potvin (2007)
 			
+      // initialize CO2
       uint256 CO2 = 0;
 
+      // iterate through tree lifespan
       for (uint i = 0; i <= 85; i++) {
-        
+
+        // From "multi-model averaging" by Chave et al (2001), calulcate the body mass
         (uint256 bodyMass, uint256 precision1) = power(_treeDBH, 1, 25445, 10000);
         bodyMass = bodyMass * 998 / 10000;
 
+        // From Niklas and Enquist (2001), use body mass to predict growth rate
         (uint256 growthRate, uint256 precision2) = power(bodyMass / (2 ** precision1), 1, 763, 1000);
         growthRate = growthRate * 208 / 1000;
 
+        // e representation as numerator and denominator
         uint256 eN = 271828;
         uint256 eD = 100000;
 
         // TODO: assume logarithmic decline of rate of production instead of linear
 
+        // calculate current growth rate assuming linear decline of rate of production
         uint256 dKdY = growthRate * (85 - i) / 85;
 
+        // From Cairns et al (1997), below ground biomass is 24% of above ground biomass
         uint256 dKdYT = dKdY * 124 / 100;
 
+        // From Kirby and Potvin (2007), carbon is 47% of total biomass
         uint256 C = dKdYT * 47 / 100;
 
+        // calculate conversion of carbon to C02 and remove precision factor
         CO2 += C * 36666 / 10000 / (2 ** precision2);
       }
 
