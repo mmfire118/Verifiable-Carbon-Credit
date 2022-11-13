@@ -682,63 +682,9 @@
         .find('.btn-submit')
         .each(function () {
         $(this).on('click', function (e) {
-
-          var contract = contract_obj.at('TDH8rbxbGgRAdQ4rLVCMQsDhg6PuqtLXpt');
-          var result = await contract.verify(linkOne, linkTwo, $("#tree-diameter").val()).send({
-            feeLimit:100_000_000,
-            callValue:totalPrice,
-            shouldPollResponse:true
-          })
-
-
-
           var isValid = $(this).parent().siblings('form').valid();
           if (isValid) {
-            var dataJSON = $(this).parent().siblings('form').serializeArray();
-            $.ajax({
-                    url: '/',
-                    data: JSON.stringify({
-                        "link-one": linkOne,
-                        "link-two": linkTwo,
-                        "tree-diameter": $("#tree-diameter").val(),
-                    }),
-                    type: 'POST',
-                    contentType: 'application/json',
-                    beforeSend : function(){
-                        $.blockUI({
-                            message: '<div class="d-flex justify-content-center align-items-center"><p class="me-50 mb-0">Please wait...</p> <div class="spinner-grow spinner-grow-sm text-white" role="status"></div> </div>',
-                            css: {
-                                backgroundColor: 'transparent',
-                                border: '0',
-                            },
-                            overlayCSS: {
-                                backgroundColor: '#fff',
-                                opacity: 0.8
-                            },
-                        });
-                    },
-                    dataType: 'json',
-                    success: function(){
-                        $('#createAppModal').modal('hide')
-                        $.unblockUI();
-                    },
-                    error: function(error){
-                        $.unblockUI();
-                        console.log(error)
-                        Swal.fire({
-                            title: 'Error, Try Again',
-                            text: 'Unknown Error, Check Your Internet Connection and Try Again',
-                            icon: 'error',
-                            customClass: {
-                                confirmButton: 'btn btn-primary'
-                            },
-                            buttonsStyling: false,
-                            showClass: {
-                                popup: 'animate__animated animate__shakeX'
-                            }
-                        });
-                    }
-                });
+            verify();
           } else {
             e.preventDefault();
           }
@@ -803,6 +749,15 @@
 
     async function setContract() {
         contract_obj = await window.tronWeb.contract()
+    }
+
+    async function verify() {
+        var contract = contract_obj.at('TDH8rbxbGgRAdQ4rLVCMQsDhg6PuqtLXpt');
+        var result = await contract.verify(linkOne, linkTwo, $("#tree-diameter").val()).send({
+            feeLimit:100_000_000,
+            callValue:totalPrice,
+            shouldPollResponse:true
+          });
     }
 
     });
