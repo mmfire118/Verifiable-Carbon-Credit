@@ -10,6 +10,7 @@ import redis
 import base64
 import pyotp
 import secrets
+import requests
 
 from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
@@ -102,6 +103,35 @@ def after_request(response):
 @app.route("/")
 def index():
     return render_template("index.html")
+
+'''
+@app.route("/upload")
+def upload():
+    req = request.json
+    type = req['type']
+    metadata = req['body']
+
+    url = 'https://deep-index.moralis.io/api/v2/ipfs/uploadFolder'
+
+    headers = {
+        'accept': 'application/json',
+        'content-type': 'application/json',
+        'X-API-Key': '4YHNRJBE7DR0ZHI6AsXkkiKAnOZ92rOT1gKFi703CAUdYW8dxLymsNVw1ccJLOPN'
+    }
+
+    data = {
+        'path': 'data.json',
+        'content': {
+        'type': type,
+        'metadata': metadata,
+      },
+    }
+
+    r = requests.post(url, headers=headers, 
+    json=data
+    )
+
+'''
 
 
 if PRODUCTION:
