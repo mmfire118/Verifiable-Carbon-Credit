@@ -555,17 +555,20 @@
             $.ajax({
                     url: 'https://vcc-backend-5uia.onrender.com/upload',
                     data: JSON.stringify({
-                        "title": $("#title").val(),
-                        "author": $("#author").val(),
-                        "contact-information": $("#contact-information").val(),
-                        "version": $("#version").val(),
-                        "date-of-issue": $("#date-of-issue").val(),
-                        "project-location": $("#project-location").val(),
-                        "description": $("#description").val(),
-                        "start-date": $("#start-date").val(),
-                        "crediting-period": $("#crediting-period").val(),
-                        "estimated-amount": $("#estimated-amount").val(),
-                        "energy-consumption": $("#energy-consumption").val()
+                        "type": "PDD",
+                        "metadata": {
+                            "title": $("#title").val(),
+                            "author": $("#author").val(),
+                            "contact-information": $("#contact-information").val(),
+                            "version": $("#version").val(),
+                            "date-of-issue": $("#date-of-issue").val(),
+                            "project-location": $("#project-location").val(),
+                            "description": $("#description").val(),
+                            "start-date": $("#start-date").val(),
+                            "crediting-period": $("#crediting-period").val(),
+                            "estimated-amount": $("#estimated-amount").val(),
+                            "energy-consumption": $("#energy-consumption").val()                        
+                        }
                     }),
                     type: 'POST',
                     contentType: 'application/json',
@@ -621,14 +624,17 @@
             $.ajax({
                     url: 'https://vcc-backend-5uia.onrender.com/upload',
                     data: JSON.stringify({
-                        "plot-id": $("#plot-id").val(),
-                        "plot-area": $("#plot-area").val(),
-                        "latitude": $("#latitude").val(),
-                        "longitude": $("#longitude").val(),
-                        "tree-number": $("#tree-number").val(),
-                        "tree-diameter": $("#tree-diameter").val(),
-                        "specie-string": $("#specie-string").val(),
-                        "characteristics-string": $("#characteristics-string").val(),
+                        "type": "metadata",
+                        "metadata": {
+                            "plot-id": $("#plot-id").val(),
+                            "plot-area": $("#plot-area").val(),
+                            "latitude": $("#latitude").val(),
+                            "longitude": $("#longitude").val(),
+                            "tree-number": $("#tree-number").val(),
+                            "tree-diameter": $("#tree-diameter").val(),
+                            "specie-string": $("#specie-string").val(),
+                            "characteristics-string": $("#characteristics-string").val(),
+                        }
                     }),
                     type: 'POST',
                     contentType: 'application/json',

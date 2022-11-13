@@ -31,8 +31,7 @@ Our solution is fully integrated into the TRON ecosystem. Companies authenticate
 ## Technical Explanation
 
 ### Frontend
-Our frontend is built in HTML, CSS ...
-TODO: @Miles
+Our frontend is built in HTML, CSS and frameworks.
 
 We use the web-based TronLink frontend connection to authenticate into user wallets and interact with the smart contracts on-chain. The developer-friendly documentation and Javascript interactions on TRON made it possible for us to quickly iterate on our user experience and user flow.
 
