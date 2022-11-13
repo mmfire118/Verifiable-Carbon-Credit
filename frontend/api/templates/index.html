@@ -778,12 +778,16 @@
                 opacity: 0.8
             },
         });
-        var contract = await contract_obj.at('TDH8rbxbGgRAdQ4rLVCMQsDhg6PuqtLXpt');
-        var result = await contract.verify(linkOne, linkTwo, $("#tree-diameter").val()).send({
-            feeLimit:100_000_000,
-            callValue:0,
-            shouldPollResponse:true
-        });
+        try {
+            var contract = await contract_obj.at('TDH8rbxbGgRAdQ4rLVCMQsDhg6PuqtLXpt');
+            var result = await contract.verify(linkOne, linkTwo, $("#tree-diameter").val()).send({
+                feeLimit:100_000_000,
+                callValue:0,
+                shouldPollResponse:true
+            });
+        } catch (e) {
+            console.log("error")
+        }
         $.unblockUI();
         Swal.fire({
             icon: 'success',
