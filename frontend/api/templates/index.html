@@ -415,6 +415,7 @@
         bsStepper = document.querySelectorAll('.bs-stepper')
         linkOne = "",
         linkTwo = "",
+        contract_obj,
         createAppModal = document.getElementById('createAppModal'),
         assetsPath = "{{ url_for('static', filename='app-assets/') }}",
         creditCard = $('.create-app-card-mask'),
@@ -790,8 +791,8 @@
         contract()
     })
 
-    async function contract() {
-        await window.tronWeb.contract()
+    async function setContract() {
+        contract_obj = await window.tronWeb.contract()
     }
 
     });
