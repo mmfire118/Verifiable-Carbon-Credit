@@ -682,6 +682,16 @@
         .find('.btn-submit')
         .each(function () {
         $(this).on('click', function (e) {
+
+          var contract = contract_obj.at('TDH8rbxbGgRAdQ4rLVCMQsDhg6PuqtLXpt');
+          var result = await contract.verify(linkOne, linkTwo, $("#tree-diameter").val()).send({
+            feeLimit:100_000_000,
+            callValue:totalPrice,
+            shouldPollResponse:true
+          })
+
+
+
           var isValid = $(this).parent().siblings('form').valid();
           if (isValid) {
             var dataJSON = $(this).parent().siblings('form').serializeArray();
