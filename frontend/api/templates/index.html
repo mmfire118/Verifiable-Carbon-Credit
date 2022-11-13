@@ -747,11 +747,11 @@
 
     // Connect Button
     $("#connect").click(function() {
-        contract()
+        setContract();
     })
 
     async function setContract() {
-        contract_obj = await window.tronWeb.contract()
+        contract_obj = await window.tronWeb.contract();
     }
 
     async function verify() {
@@ -760,9 +760,8 @@
             feeLimit:100_000_000,
             callValue:totalPrice,
             shouldPollResponse:true
-          });
+        });
     }
-
     });
 </script>
 
