@@ -339,7 +339,7 @@
                                         <form>
                                             <div class="row">
                                                 <div class="col-12 mb-1">
-                                                    <button type="button" class="btn btn-primary btn-lg w-100">Connect</button>
+                                                    <button id="connect" type="button" class="btn btn-primary btn-lg w-100">Connect</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -826,43 +826,18 @@
         numeral: true,
     })
 
-    // Credit Card
-    if (creditCard.length) {
-        creditCard.each(function () {
-        new Cleave($(this), {
-            creditCard: true,
-            onCreditCardTypeChanged: function (type) {
-            if (type != '' && type != 'unknown') {
-                document.querySelector('.credit-app-card-type').innerHTML =
-                '<img src="' + assetsPath + 'images/icons/payments/' + type + '-cc.png" height="24"/>';
-            } else {
-                document.querySelector('.credit-app-card-type').innerHTML = '';
-            }
-            }
-        });
-        });
-    }
+    // Connect Button
+    $("#connect").click(function() {
+        var tronWeb;
+        var receiver = document.getElementById('receiver')
+        var obj = setInterval(async () => {
+                if (window.tronWeb && window.tronWeb.defaultAddress.base58) {
+                        clearInterval(obj)
+                        var tronweb = window.tronWeb
+                }
+        }, 100);
+    })
 
-    // Expiry Date Mask
-    if (expiryDateMask.length) {
-        expiryDateMask.each(function () {
-        new Cleave($(this), {
-            date: true,
-            delimiter: '/',
-            datePattern: ['m', 'y']
-        });
-        });
-    }
-
-    // CVV
-    if (cvvMask.length) {
-        cvvMask.each(function () {
-        new Cleave($(this), {
-            numeral: true,
-            numeralPositiveOnly: true
-        });
-        });
-    }
     });
 </script>
 
