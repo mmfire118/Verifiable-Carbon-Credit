@@ -14,6 +14,7 @@ contract VCCToken is ERC20 {
 		mapping (address => string) public metadata;
 		mapping (address => string) public projectDesignDocument;
 		mapping (address => string) public projectMonitoringReport;
+    mapping (address => bool) public lock;
 
     // on creation call (contract details)
 		constructor() ERC20("Verifiable Carbon Credit", "VCC") {
@@ -427,10 +428,23 @@ contract VCCToken is ERC20 {
 
       // console.log("total CO2 for this project is verified to be: ", CO2);
 
+      if (metadata[msg.sender] || projectDesignDocument[msg.sender]) {
+        lock[msg.sender] = false;
+      } else {
+        lock[msg.sender] = true;
+      }
+
 			_mint(msg.sender, CO2);
       metadata[msg.sender] = _metadata;
       projectDesignDocument[msg.sender] = _projectDesignDocument;
 
 			emit Verified(msg.sender, CO2);
 		}
+
+    //unlocks carbon credit
+    function unlock() external {
+      if (lock[msg.sender]) {
+        lock[msg.sender] = false;
+      }
+    }
 }
