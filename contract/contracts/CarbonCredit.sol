@@ -14,6 +14,7 @@ contract VCCToken is ERC20 {
 		mapping (address => string) public metadata;
 		mapping (address => string) public projectDesignDocument;
 		mapping (address => string) public projectMonitoringReport;
+    mapping (address => bool) public isRetired; 
 
     // on creation call (contract details)
 		constructor() ERC20("Verifiable Carbon Credit", "VCC") {
@@ -390,6 +391,9 @@ contract VCCToken is ERC20 {
 			uint256 _treeDBH
 			) external {
 
+      if (isRetired = true)
+
+
       // model sources: Mora Lab, Chave et at (2001), Niklas and Enquist (2001), Cairns et al (1997), Kirby and Potvin (2007)
 			
       // initialize CO2
@@ -433,4 +437,11 @@ contract VCCToken is ERC20 {
 
 			emit Verified(msg.sender, CO2);
 		}
+
+    function retire() external {
+      if (isRetired(msg.sender) = false) {
+        isRetired(msg.sender) = true;
+      }
+    }
+
 }
