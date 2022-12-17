@@ -10,11 +10,13 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 contract VCCToken is ERC20 {
 		event Verified(address beneficiary, uint256 amount);
 
+
     // mappings for IPFS references
 		mapping (address => string) public metadata;
 		mapping (address => string) public projectDesignDocument;
 		mapping (address => string) public projectMonitoringReport;
     mapping (address => bool) public lock;
+    mapping (address => bool) public retired;
 
     // on creation call (contract details)
 		constructor() ERC20("Verifiable Carbon Credit", "VCC") {
@@ -427,6 +429,7 @@ contract VCCToken is ERC20 {
       }
 
       // console.log("total CO2 for this project is verified to be: ", CO2);
+      retired[msg.sender] = false;
 
       if (metadata[msg.sender] || projectDesignDocument[msg.sender]) {
         lock[msg.sender] = false;
@@ -442,9 +445,19 @@ contract VCCToken is ERC20 {
 		}
 
     //unlocks carbon credit
-    function unlock() external {
-      if (lock[msg.sender]) {
+    function unlock(string memory _projectMonitoringReport) external {
         lock[msg.sender] = false;
-      }
+        if (projectMonitoringReport[msg.sender]  != _projectMonitoringReport) {
+          projectMonitoringReport[msg.sender] = _projectMonitoringReport;
+        }
+    }
+
+    //retires carbon credit, does not allow for trading functionality
+    function retire() external {
+        retired[msg.sender] = true;
+    }
+
+    function isTradeable() external returns (bool){
+        return !retired[msg.sender];
     }
 }
