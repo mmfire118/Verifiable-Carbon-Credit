@@ -431,7 +431,7 @@ contract VCCToken is ERC20 {
       // console.log("total CO2 for this project is verified to be: ", CO2);
       retired[msg.sender] = false;
 
-      if (metadata[msg.sender] || projectDesignDocument[msg.sender]) {
+      if (keccak256(abi.encodePacked(metadata[msg.sender])) != keccak256(abi.encodePacked("")) || keccak256(abi.encodePacked(projectDesignDocument[msg.sender])) != keccak256(abi.encodePacked(""))) {
         lock[msg.sender] = false;
       } else {
         lock[msg.sender] = true;
@@ -447,7 +447,7 @@ contract VCCToken is ERC20 {
     //unlocks carbon credit
     function unlock(string memory _projectMonitoringReport) external {
         lock[msg.sender] = false;
-        if (projectMonitoringReport[msg.sender]  != _projectMonitoringReport) {
+        if (keccak256(abi.encodePacked(projectMonitoringReport[msg.sender])) != keccak256(abi.encodePacked(_projectMonitoringReport))) {
           projectMonitoringReport[msg.sender] = _projectMonitoringReport;
         }
     }

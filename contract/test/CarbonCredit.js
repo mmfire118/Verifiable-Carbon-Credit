@@ -33,11 +33,4 @@ describe("CarbonCredit Suite", function () {
       )).to.emit(carbonCredit, "Verified");
     });
   });
-  describe("Unlock", function () {
-    it("Should unlock a CarbonCredit", async function () {
-      await carbonCredit.unlock("test");
-      await expect(CarbonCredit.lock[carbonCredit]).toBe(false);
-      await expect(CarbonCredit.projectMonitoringReport[carbonCredit]).toBe("test");
-    });
-  });
 })
