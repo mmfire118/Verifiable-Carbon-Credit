@@ -460,4 +460,3 @@ contract VCCToken is ERC20 {
     function isTradeable() external returns (bool){
         return !retired[msg.sender];
     }
-}
